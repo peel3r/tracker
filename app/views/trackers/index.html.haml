@@ -16,10 +16,8 @@
         %td= tracker.title
         %td= tracker.kind
         %td= tracker.pool
-        %td= link_to 'Show', tracker
-        %td= link_to 'Edit', edit_tracker_path(tracker)
-        %td= link_to 'Destroy', tracker, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', [@pool, tracker]
+        %td= link_to 'Edit', edit_pool_tracker_path(@pool,tracker)
+        %td= link_to 'Destroy', [@pool,tracker] , :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
 
-= link_to 'New Tracker', new_tracker_path

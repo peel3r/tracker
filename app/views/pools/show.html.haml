@@ -1,9 +1,12 @@
-%p#notice= notice
+%h1=@pool.title
+%p.btn-group
+  = link_to 'Edit', edit_pool_path(@pool), class: "btn btn-default"
+  = link_to 'Back', pools_path, class: "btn btn-default"
+  = link_to 'Add new Tracker', new_pool_tracker_path(@pool), class: "btn btn-default"
 
-%p
-  %b Title:
-  = @pool.title
 
-= link_to 'Edit', edit_pool_path(@pool)
-\|
-= link_to 'Back', pools_path
+%h2 Trackers
+
+%ul
+  -@pool.trackers.each do |tracker|
+    %li=tracker.title

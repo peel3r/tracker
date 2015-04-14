@@ -3,11 +3,12 @@
 %ul
   -@pools.each do |pool|
     %li
-      = link_to pool.title, pool
-      = link_to 'Show', pool
-      = link_to 'Edit', edit_pool_path(pool)
-      = link_to 'Destroy', pool, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %p= link_to pool.title, pool
+      %p.btn-group.btn-group-xs
+        = link_to 'Show', pool, class: "btn btn-default"
+        = link_to 'Edit', edit_pool_path(pool), class: "btn btn-default"
+        = link_to 'Destroy', pool, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
+        = link_to 'Add new Tracker', new_pool_tracker_path(pool), class: "btn btn-default"
 %br
 
 %p= link_to 'New Pool', new_pool_path, class: "btn btn-primary"
