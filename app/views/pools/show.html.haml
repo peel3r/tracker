@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @pool.title
+
+= link_to 'Edit', edit_pool_path(@pool)
+\|
+= link_to 'Back', pools_path

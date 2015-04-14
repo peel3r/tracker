@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @tracker.title
+%p
+  %b Kind:
+  = @tracker.kind
+%p
+  %b Pool:
+  = @tracker.pool
+
+= link_to 'Edit', edit_tracker_path(@tracker)
+\|
+= link_to 'Back', trackers_path
