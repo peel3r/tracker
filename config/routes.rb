@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :pools do
     resources :trackers
+    resources :submissions, only: [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

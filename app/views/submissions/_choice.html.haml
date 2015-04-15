@@ -1,0 +1,7 @@
+%label=c.object.tracker.title
+%radio
+  -c.object.tracker.possible_trackers.each do |possible_answer|
+    %p
+      =possible_answer.title
+      =c.radio_button   :possible_tracker_id, possible_answer.id
+      =c.hidden_field :tracker_id

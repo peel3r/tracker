@@ -1,15 +1,17 @@
 = form_for [@pool, @tracker] do |f|
   - if @tracker.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@tracker.errors.count, "error")} prohibited this tracker from being saved:"
+      %h3.text-danger= "#{pluralize(@tracker.errors.count, "error")} prohibited this question from being saved:"
       %ul
         - @tracker.errors.full_messages.each do |msg|
           %li= msg
 
   %p
-    = f.label :title
-    = f.text_field :title, class: "form-control"
+    =f.label :title, "Name"
+    =f.text_field :title, class: "form-control input-lg"
+
   %p
+    %label What kind of tracker?
   .radio
     -@kind_options.each do |option|
       %label
@@ -17,4 +19,12 @@
         =option[0]
 
   %p
-    = f.submit 'Save', class: "btn btn-default"
+    %label Specify some choices:
+
+  =f.fields_for :possible_trackers do |c|
+    %p
+      =c.text_field :title, placeholder: "Type your choice", class: "form-control"
+
+  %p
+    =f.hidden_field :pool_id
+    =f.submit 'Save', class: "btn btn-primary"

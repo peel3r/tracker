@@ -1,4 +1,7 @@
 class Tracker < ActiveRecord::Base
   belongs_to :pool
-  validates_presence_of :title
+  has_many :possible_trackers
+  has_many :answers
+  accepts_nested_attributes_for :possible_trackers, reject_if: proc {  |attributes|  attributes['title'].blank?  }
+  #validates_presence_of :title
 end

@@ -10,3 +10,21 @@
 %ul
   -@pool.trackers.each do |tracker|
     %li=tracker.title
+    %ul
+      -tracker.possible_trackers.each do |possible_answer|
+        %li=possible_answer.title
+
+
+%h2 Submissions
+
+-@pool.submissions.each do |submission|
+  .col-md-6
+    .panel.panel-default
+      .panel-heading.text-right
+        =time_ago_in_words submission.created_at
+      .panel-body
+        %dl
+          -submission.answers.each do |answer|
+            %dt=answer.tracker.title
+            %dd
+              =answer.value.present?  ? answer.value : answer.possible_tracker.title

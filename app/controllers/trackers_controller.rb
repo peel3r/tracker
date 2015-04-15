@@ -2,6 +2,7 @@ class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
   before_action :set_pool #sets appropriate pool before doing anything else
   before_action :set_kind_trackers
+
   def index
     @trackers = Tracker.all
   end
@@ -13,6 +14,7 @@ class TrackersController < ApplicationController
 
   def new
     @tracker = @pool.trackers.build
+    5.times { @tracker.possible_trackers.build }
   end
 
 
@@ -75,6 +77,6 @@ class TrackersController < ApplicationController
     end
 
     def tracker_params
-      params.require(:tracker).permit(:title, :kind, :pool_id)
+      params.require(:tracker).permit(:title, :kind, :pool_id,{ possible_trackers_attributes: [:title,:tracker_id] })
     end
 end

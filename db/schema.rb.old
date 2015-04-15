@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(version: 20150415132414) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "submission_id"
-    t.integer  "possible_tracker_id"
+    t.integer  "possible_trackers_id"
     t.string   "value"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "tracker_id"
   end
 
-  add_index "answers", ["possible_tracker_id"], name: "index_answers_on_possible_tracker_id"
+  add_index "answers", ["possible_trackers_id"], name: "index_answers_on_possible_trackers_id"
   add_index "answers", ["submission_id"], name: "index_answers_on_submission_id"
 
   create_table "pools", force: :cascade do |t|

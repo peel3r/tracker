@@ -1,0 +1,7 @@
+%h1=@pool.title
+
+=form_for [ @pool, @submission ] do |f|
+  =f.fields_for :answers do |c|
+    =render c.object.tracker.kind, c: c
+
+  =f.submit "Finish", class: "btn btn-primary"
