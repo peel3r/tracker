@@ -7,11 +7,11 @@
           %li= msg
 
   %p
-    =f.label :title, "Name"
+    =f.label :title, "Write Your Question"
     =f.text_field :title, class: "form-control input-lg"
 
   %p
-    %label What kind of tracker?
+    %label What kind of question you want to add?
   .radio
     -@kind_options.each do |option|
       %label

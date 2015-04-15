@@ -66,9 +66,9 @@ class TrackersController < ApplicationController
 
     def set_kind_trackers
       @kind_options = [
-          ["Open tracker", "open"],
-          ["Multiple Choice Tracker", "choice"],
-          ["Multi Choice Tracker", "multichoice"]
+          ["Open Question", "open"],
+          ["Multiple Choice Question", "choice"],
+          ["Multi Choice Question", "multichoice"]
       ]
     end
 

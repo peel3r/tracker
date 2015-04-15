@@ -21,7 +21,7 @@ class SubmissionsController < ApplicationController
 
   def submission_params
     params.require(:submission).permit(:pool_id, {
-      answers_attributes:[:value,:tracker_id, :submission_id, :possible_tracker_id]})
+      answers_attributes: [:value,:tracker_id, :submission_id, :possible_tracker_id] })
   end
 
 end

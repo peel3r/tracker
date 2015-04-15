@@ -28,7 +28,7 @@ class PoolsController < ApplicationController
 
     respond_to do |format|
       if @pool.save
-        format.html { redirect_to @pool, notice: 'Pool was successfully created.' }
+        format.html { redirect_to @pool, notice: 'Tracker was successfully created.' }
         format.json { render :show, status: :created, location: @pool }
       else
         format.html { render :new }

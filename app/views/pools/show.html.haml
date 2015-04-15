@@ -2,10 +2,10 @@
 %p.btn-group
   = link_to 'Edit', edit_pool_path(@pool), class: "btn btn-default"
   = link_to 'Back', pools_path, class: "btn btn-default"
-  = link_to 'Add new Tracker', new_pool_tracker_path(@pool), class: "btn btn-default"
+  = link_to 'Add new Question to the Tracker', new_pool_tracker_path(@pool), class: "btn btn-default"
 
 
-%h2 Trackers
+%h2 Tracker Questions
 
 %ul
   -@pool.trackers.each do |tracker|
@@ -15,7 +15,7 @@
         %li=possible_answer.title
 
 
-%h2 Submissions
+%h2 Tracker Submissions
 
 -@pool.submissions.each do |submission|
   .col-md-6
@@ -27,4 +27,4 @@
           -submission.answers.each do |answer|
             %dt=answer.tracker.title
             %dd
-              =answer.value.present?  ? answer.value : answer.possible_tracker.title
+              =answer.value.present?  ? answer.value : answer.possible_tracker_id

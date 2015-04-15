@@ -1,4 +1,4 @@
-%h1 Listing pools
+%h1 Listing Trackers
 
 %ul
   -@pools.each do |pool|
@@ -8,9 +8,9 @@
         = link_to 'Show', pool, class: "btn btn-default"
         = link_to 'Edit', edit_pool_path(pool), class: "btn btn-default"
         = link_to 'Destroy', pool, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
-        = link_to 'Add new Tracker', new_pool_tracker_path(pool), class: "btn btn-default"
+        = link_to 'Add a Question to the Tracker', new_pool_tracker_path(pool), class: "btn btn-default"
         = link_to 'Answer', new_pool_submission_path(pool), class: "btn btn-default"
 
 %br
 
-%p= link_to 'New Pool', new_pool_path, class: "btn btn-primary"
+%p= link_to 'New Tracker', new_pool_path, class: "btn btn-primary"
