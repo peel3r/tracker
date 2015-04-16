@@ -1,30 +1,60 @@
-%h1=@pool.title
-%p.btn-group
-  = link_to 'Edit', edit_pool_path(@pool), class: "btn btn-default"
-  = link_to 'Back', pools_path, class: "btn btn-default"
-  = link_to 'Add new Question to the Tracker', new_pool_tracker_path(@pool), class: "btn btn-default"
+%h1
+  =@pool.title
+  = link_to edit_pool_path(@pool) do
+    %span.glyphicon.glyphicon-edit
+
+/Nav tabs
+%ul.nav.nav-tabs
+  %li.active
+    =link_to "Trackers", "#tab-trackers", data: {toggle: "tab"}
+  %li
+    =link_to "Submissions", "#tab-results", data: {toggle: "tab"}
+  %li
+    =link_to "Stats", "#tab-stats", data: {toggle: "tab"}
+
+/ Tab panes
 
 
-%h2 Tracker Questions
 
-%ul
-  -@pool.trackers.each do |tracker|
-    %li=tracker.title
-    %ul
-      -tracker.possible_trackers.each do |possible_answer|
-        %li=possible_answer.title
+.tab-content
+  #tab-trackers.tab-pane.active
+    %h2 Tracker Questions
+    -if @pool.trackers.any?
+      %ul
+        -@pool.trackers.each do |tracker|
+          %li
+            =tracker.title
+            =link_to  pool_tracker_path(@pool, tracker), method: :delete do
+              %span.glyphicon.glyphicon-remove
+
+          %ul
+            -tracker.possible_trackers.each do |possible_answer|
+              %li=possible_answer.title
+
+            %p
+        %p.btn-group
+          = link_to 'Back', pools_path, class: "btn btn-default"
+          = link_to 'Add new Question to the Tracker', new_pool_tracker_path(@pool), class: "btn btn-primary"
+
+    -else
+      %p.bg-info.flash There is no questions associated to this tracker.
+      %p
+      %p.btn-group
+        = link_to 'Back', pools_path, class: "btn btn-default"
+        = link_to 'Add new Question to the Tracker', new_pool_tracker_path(@pool), class: "btn btn-primary"
 
 
-%h2 Tracker Submissions
+  #tab-results.tab-pane
+    %h2 Tracker Submissions
 
--@pool.submissions.each do |submission|
-  .col-md-6
-    .panel.panel-default
-      .panel-heading.text-right
-        =time_ago_in_words submission.created_at
-      .panel-body
-        %dl
-          -submission.answers.each do |answer|
-            %dt=answer.tracker.title
-            %dd
-              =answer.value.present?  ? answer.value : answer.possible_tracker_id
+    -@pool.submissions.each do |submission|
+      .col-md-6
+        .panel.panel-default
+          .panel-heading.text-right
+            =time_ago_in_words submission.created_at
+          .panel-body
+            %dl
+              -submission.answers.each do |answer|
+                %dt=answer.tracker.title
+                %dd
+                  =answer.value.present?  ? answer.value : answer.possible_tracker_id

@@ -4,5 +4,5 @@
   -c.object.tracker.possible_trackers.each do |possible_tracker|
     %p
       =possible_tracker.title
-      =c.check_box   :possible_tracker_id
+      =c.radio_button   :possible_tracker_id, possible_tracker.id
       =c.hidden_field :tracker_id
