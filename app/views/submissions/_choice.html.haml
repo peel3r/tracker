@@ -1,8 +1,10 @@
 %p
   =c.label :value, c.object.tracker.title
-  %radio
-  -c.object.tracker.possible_trackers.each do |possible_tracker|
-    %p
+
+.radio
+-c.object.tracker.possible_trackers.each do |possible_tracker|
+  %p
+    %label
       =possible_tracker.title
-      =c.radio_button   :possible_tracker_id, possible_tracker.id
+      =c.radio_button :possible_tracker_id, possible_tracker.id
       =c.hidden_field :tracker_id

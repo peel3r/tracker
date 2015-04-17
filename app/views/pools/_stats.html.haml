@@ -1,0 +1,25 @@
+#pools_per_month
+  :javascript
+    var selector = "#pools_per_month";
+    var data = #{@pool.serialize_for_graph};
+    Graph.instances.push(new Graph(selector, data, "column"));
+
+#answers_per_tracker
+  -@pool.trackers.each do |tracker|
+    -if tracker.kind == "choice"
+      .col-md-6{id: "answers_per_tracker_#{tracker.id}" }
+      :javascript
+        var selector = "#answers_per_tracker_#{tracker.id}";
+        var data = #{tracker.serialize_for_graph};
+        Graph.instances.push(new Graph(selector, data, "pie"));
+
+
+
+-content_for :footer do
+  :javascript
+    google.load('visualization', '1.0', {'packages':['corechart']});
+    google.setOnLoadCallback(function(){
+      Graph.instances.forEach(function(instance) {
+        instance.render();
+      });
+    });

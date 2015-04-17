@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PoolSerializerCountPerMonthTest < Minitest::Test
+class PoolSerializerCountPerMonthTest < MiniTest::Test
   include FactoryGirl::Syntax::Methods
 
   attr_reader :pool
@@ -15,15 +15,15 @@ class PoolSerializerCountPerMonthTest < Minitest::Test
   end
 
   def test_pools_per_month_have_numbers
-    assert_kind_of Numeric, @stats[:data].first
+     assert_kind_of Numeric, @stats[:data].first
   end
 
   def test_pools_per_month_have_x_axis
-    assert_equal "Pools per Month", @stats.fetch(:x_axis).fetch(:legend)
+    assert_equal "Submissions per month", @stats.fetch(:x_axis).fetch(:legend)
   end
 
   def test_pools_per_month_have_x_axis_series
-    assert_kind_of Array, @stats.fetch(:x_axis).fetch(:series)
+   assert_kind_of Array, @stats.fetch(:x_axis).fetch(:series)
   end
 
   def test_pools_per_month_have_x_axis_series_in_proper_format
