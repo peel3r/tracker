@@ -2,6 +2,7 @@ class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
   before_action :set_pool #sets appropriate pool before doing anything else
   before_action :set_kind_trackers
+  before_action :admin!
 
   def index
     @trackers = Tracker.all
@@ -79,4 +80,10 @@ class TrackersController < ApplicationController
     def tracker_params
       params.require(:tracker).permit(:title, :kind, :pool_id,{ possible_trackers_attributes: [:title,:tracker_id] })
     end
+
+  def admin!
+    authenticate_user!
+
+    redirect_to root_path, alert: "you are not authorized to this operation"  unless current_user.admin?
+  end
 end

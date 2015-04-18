@@ -3,14 +3,20 @@
 %ul
   -@pools.each do |pool|
     %li
-      %p= link_to pool.title, pool
+      %p
+        -if current_user && current_user.admin?
+          =link_to pool.title, pool
+        -else
+          = pool.title
+
+
       %p.btn-group.btn-group-xs
-        = link_to 'Show', pool, class: "btn btn-default"
-        = link_to 'Edit', edit_pool_path(pool), class: "btn btn-default"
-        = link_to 'Destroy', pool, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
-        = link_to 'Add a Question to the Tracker', new_pool_tracker_path(pool), class: "btn btn-default"
+        = link_to 'Show', pool, class: "btn btn-default" if current_user && current_user.admin?
+        = link_to 'Edit', edit_pool_path(pool), class: "btn btn-default" if current_user && current_user.admin?
+        = link_to 'Destroy', pool, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default" if current_user && current_user.admin?
+        = link_to 'Add a Question to the Tracker', new_pool_tracker_path(pool), class: "btn btn-default" if current_user && current_user.admin?
         = link_to 'Answer', new_pool_submission_path(pool), class: "btn btn-default"
 
 %br
-
-%p= link_to 'New Tracker', new_pool_path, class: "btn btn-primary"
+-if current_user && current_user.admin?
+  %p= link_to 'New Tracker', new_pool_path, class: "btn btn-primary"

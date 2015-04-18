@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :pools do
     resources :trackers
     resources :submissions, only: [:new, :create]

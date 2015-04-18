@@ -1,5 +1,6 @@
 class PoolsController < ApplicationController
   before_action :set_pool, only: [:show, :edit, :update, :destroy]
+  before_action :admin! , except: [:index]
 
   # GET /pools
   # GET /pools.json
@@ -71,4 +72,10 @@ class PoolsController < ApplicationController
     def pool_params
       params.require(:pool).permit(:title)
     end
+
+  def admin!
+    authenticate_user!
+
+    redirect_to root_path, alert: "you are not authorized to this operation"  unless current_user.admin?
+  end
 end

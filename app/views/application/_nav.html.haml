@@ -14,3 +14,17 @@
           =link_to pools_path do
             %span.glyphicon.glyphicon-flag
             Trackers
+
+      %ul.nav.navbar-nav.navbar-right
+        -if current_user
+          %li
+            %span.navbar-text Signed as #{current_user.email}
+            %li
+              =link_to destroy_session_path('user'), method: :delete do
+                %span.glyphicon.glyphicon-log-out
+                  Sign out
+        -else
+          %li
+            =link_to new_session_path('user') do
+              %span.glyphicon.glyphicon-log-in
+                Sign in
