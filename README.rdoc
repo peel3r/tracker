@@ -10,14 +10,17 @@ It's a pooling / tracking application using
  - pool model with many different trackers(aka questions)
  - a tracker model with a single or many possible trackers
  - a possible tracker model
- - a submission(replay) model with many different answers one ofor each tracker(question)
+ - a submission(replay) model with many different answers
+   one ofor each tracker(question)
  - an answer model that holds the data from the submission
  
 *The solution separates the concerns about data processing. 
  - it stores the data into respective models
- - it transforms the model data and digest it through charts providing an abstraction that the 
- chart library can consume.
- - provided abstraction allow us to use different tools: Google Charts, HighCharts or even D3.js 
+ - it transforms the model data and digest it through charts
+   providing an abstraction that the
+   chart library can consume.
+ - provided abstraction allow us to use different tools:
+   Google Charts, HighCharts or even D3.js
  without affecting the data models.
  
  ***
