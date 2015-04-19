@@ -31,3 +31,7 @@ It's a pooling / tracking application using
  - Work on validations
  - Use JavaScript in order to enhance a user experience
 
+ ==Project description and more
+ http://peel3r.github.io
+
+
