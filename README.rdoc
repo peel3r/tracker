@@ -1,28 +1,30 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's a pooling / tracking application using
+ - Rails
+ - Bootstrap
+ - Googlecharts.
 
-Things you may want to cover:
+*It splits a large data  model into different objects.
+*It has a 
+ - pool model with many different trackers(aka questions)
+ - a tracker model with a single or many possible trackers
+ - a possible tracker model
+ - a submission(replay) model with many different answers one ofor each tracker(question)
+ - an answer model that holds the data from the submission
+ 
+*The solution separates the concerns about data processing. 
+ - it stores the data into respective models
+ - it transforms the model data and digest it through charts providing an abstraction that the 
+ chart library can consume.
+ - provided abstraction allow us to use different tools: Google Charts, HighCharts or even D3.js 
+ without affecting the data models.
+ 
+ ***
+== TO DO
+ 
+ - Generic data processing to create charts from  any possible models
+ - Create a ChartSerialiser class instead of only PoolSerializer class
+ - Work on validations
+ - Use JavaScript in order to enhance a user experience
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
